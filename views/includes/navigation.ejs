@@ -1,0 +1,69 @@
+<header class="main-header">
+    <button id="side-menu-toggle"><i class='fas fa-bars' style='font-size:36px'></i></button>
+    <nav class="main-header__nav">
+        <ul class="main-header__item-list">
+
+            <li class="main-header__item">
+                <a class="<%= path === '/' ? 'active' : '' %>" href="/">Beranda</a>
+            </li>
+
+            <li class="main-header__item">
+                <a class="<%= path === '/about' ? 'active' : '' %>" href="/about">Tentang kami</a>
+            </li>
+
+            <li class="main-header__item">
+                <a class="<%= path === '/products' ? 'active' : '' %>" href="/products">Produk</a>
+            </li>
+            <li class="main-header__item">
+                <a class="<%= path === '/tutorial' ? 'active' : '' %>" href="/tutorial">Tutorial</a>
+            </li>
+            <li class="main-header__item">
+                <a class="<%= path === '/contact' ? 'active' : '' %>" href="/contact">Kontak</a>
+            </li>
+            <li class="main-header__item">
+                <a class="<%= path === '/login' ? 'active' : '' %>" href="/login">Masuk</a>
+            </li>
+            <li class="main-header__item">
+                <a class="<%= path === '/admin/add-product' ? 'active' : '' %>" href="/admin/add-product">Tambah Produk</a>
+            </li>
+            <li class="main-header__item">
+                <a class="<%= path === '/cart' ? 'active' : '' %>" href="/cart">Keranjang</a>
+            </li>
+            <li class="main-header__item">
+                <a class="<%= path === '/userdash' ? 'active' : '' %>" href="/userdash">Profile</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<nav class="mobile-nav">
+    <ul class="mobile-nav__item-list">
+        <li class="mobile-nav__item">
+            <a class="<%= path === '/' ? 'active' : '' %>" href="/">Beranda</a>
+        </li>
+        <li class="mobile-nav__item">
+            <a class="<%= path === '/about' ? 'active' : '' %>" href="/about">Tentang</a>
+        </li>
+        <li class="mobile-nav__item">
+            <a class="<%= path === '/products' ? 'active' : '' %>" href="/products">Produk</a>
+        </li>
+        <li class="mobile-nav__item">
+            <a class="<%= path === '/tutorial' ? 'active' : '' %>" href="/tutorial">Tutorial</a>
+        </li>
+        <li class="mobile-nav__item">
+            <a class="<%= path === '/contact' ? 'active' : '' %>" href="/contact">Kontak</a>
+        </li>
+        <% if (!isAuthenticated) { %>
+            <li class="mobile-nav__item">
+                <a class="<%= path === '/login' ? 'active' : '' %>" href="/login">Masuk</a>
+            </li>
+        <% } else { %>
+            <li class="mobile-nav__item">
+                <form action="/logout" method="post">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <button type="submit">Keluar</button>
+                </form>
+            </li>
+        <% } %>
+    </ul>
+</nav>
